@@ -3,7 +3,6 @@ from SimpleCV.ImageClass import Image, ImageSet
 from SimpleCV.DrawingLayer import *
 from SimpleCV.Features import FeatureExtractorBase
 
-
 """
 This class is encapsulates almost everything needed to train, test, and deploy a
 multiclass decision tree / forest image classifier. Training data should
@@ -52,7 +51,19 @@ class TreeClassifier:
         "Forest":2, # Lots of little trees
         "Boosted":3 # Highly optimized trees.
     }
-
+    """
+       Pruning from http://docs.orange.biolab.si/reference/rst/Orange.classification.tree.html
+    """
+    mPruningDict = {
+        "worst_acceptable":0,
+        "min_subset":0,
+        "min_instances":0,
+        "max_depth":100,
+        "max_majority":1.0,
+#        "stop": # Not sure what default is, so I'm excluding for now.
+        "m_pruning":0,
+        "same_majority_pruning":0
+    }   
     mforestFlavorDict = {
         "NTrees":100, #number of trees in our forest
         "NAttributes":None # number of attributes per split sqrt(features) is default
@@ -64,7 +75,7 @@ class TreeClassifier:
         "NClassifiers":10, #numbers of classifiers / tree splits
     }
 
-    def __init__(self,featureExtractors=[],flavor='Tree',flavorDict=None):
+    def __init__(self,featureExtractors=[],flavor='Tree',flavorDict=None, pruningDict=None):
         """
         dist = distance algorithm
         k = number of nearest neighbors
@@ -83,6 +94,12 @@ class TreeClassifier:
         self.mOrangeDomain = None
         self.mFlavorParams = None
         self.mFlavor = self.mTreeTypeDict[flavor]
+        
+        if (pruningDict is not None):
+            self.mPrune = pruningDict
+        else:
+            self.mPrune =self. mPruningDict
+            
         if(flavorDict is None):
             if(self.mFlavor == self.mTreeTypeDict["Bagged"]):
                 self.mFlavorParams = self.mBaggedFlavorDict
@@ -283,22 +300,17 @@ class TreeClassifier:
         if(savedata is not None):
             orange.saveTabDelimited (savedata, self.mDataSetOrange)
 
-        if(self.mFlavor == 0):
-            self.mLearner =  orange.TreeLearner()
-            self.mClassifier = self.mLearner(self.mDataSetOrange)
-        elif(self.mFlavor == 1): #bagged
-            self.mTree =  orange.TreeLearner()
+        self.mLearner =  orange.TreeLearner(**self.mPrune)
+        self.mTree =  orange.TreeLearner(**self.mPrune)
+        if(self.mFlavor == 1): #bagged
             self.mLearner = orngEnsemble.BaggedLearner(self.mTree,t=self.mFlavorParams["NClassifiers"])
-            self.mClassifier = self.mLearner(self.mDataSetOrange)
         elif(self.mFlavor == 2):#forest
-            self.mTree =  orange.TreeLearner()
             self.mLearner =  orngEnsemble.RandomForestLearner(trees=self.mFlavorParams["NTrees"], attributes=self.mFlavorParams["NAttributes"])
-            self.mClassifier = self.mLearner(self.mDataSetOrange)
         elif(self.mFlavor == 3):#boosted
-            self.mTree =  orange.TreeLearner()
             self.mLearner = orngEnsemble.BoostedLearner(self.mTree,t=self.mFlavorParams["NClassifiers"])
-            self.mClassifier = self.mLearner(self.mDataSetOrange)
-
+        
+        self.mClassifier = self.mLearner(self.mDataSetOrange)
+        
         correct = 0
         incorrect = 0
         for i in range(count):
