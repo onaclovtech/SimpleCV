@@ -1,5 +1,3 @@
-def train:
-   
 from SimpleCV.base import *
 from SimpleCV.ImageClass import Image, ImageSet
 from SimpleCV.DrawingLayer import *
