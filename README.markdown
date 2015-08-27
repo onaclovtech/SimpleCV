@@ -2,6 +2,8 @@
 # SimpleCV
 --------------------------
 
+As a note. I don't know if the original repo is being updated, nor do I know if this is even the right "version" of SimpleCV, however I've been using it, and have made a few fixes, and am trying to incorporate any pull requests that are pretty obviously ok from the original link. Up to you if you want to use this.
+
 [![Build Status](https://travis-ci.org/sightmachine/SimpleCV.png?branch=develop)](https://travis-ci.org/sightmachine/SimpleCV)
 
 
@@ -10,7 +12,7 @@ Quick Links:
  * [About](#about)
  * [Installation](#installation)
     * [Docker] (#docker)
-    * [Ubuntu](#ubuntu-1204)
+    * [Ubuntu](#ubuntu-1404)
     * [Virtual Environment](#virtualenv)
     * [Arch Linux](#arch-linux)
     * [Fedora](#fedora)
@@ -91,11 +93,12 @@ You will get a Ipython notebook inteface, start a new notebook and enter the fol
 
 You should now see the simplecv logo and now have a full simplecv environment setup to start playing around.
 
-<a id="ubuntu-1204"></a>
-### Ubuntu 12.04
+<a id="ubuntu-1404"></a>
+### Ubuntu 14.04
 Install with pip
 
 	sudo apt-get install ipython python-opencv python-scipy python-numpy python-pygame python-setuptools python-pip
+	sudo pip install svgwrite
 	sudo pip install https://github.com/sightmachine/SimpleCV/zipball/develop
 
 Install using clone of SimpleCV repository
@@ -461,7 +464,7 @@ to install ipython notebooks run the following:
 ## Videos - Tutorials and Demos
 
 Video tutorials and demos can be found at:
-<http://www.simplecv.org/learn/>
+<http://tutorial.simplecv.org/>
 
 ---------------------------
 <a id="mobile"></a>
