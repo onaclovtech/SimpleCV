@@ -2,7 +2,7 @@
 # SimpleCV
 --------------------------
 
-As a note. I don't know if the original repo is being updated, nor do I know if this is even the right "version" of SimpleCV, however I've been using it, and have made a few fixes, and am trying to incorporate any pull requests that are pretty obviously ok from the original link. Up to you if you want to use this.
+As a note. I don't know if the original repo is being updated, nor do I know if this is even the right "version" of SimpleCV, however I've been using it, and have made a few fixes, and am trying to incorporate any pull requests that are pretty obviously ok from the original link. Up to you if you want to use this. You may submit pull requests, however I have no idea how to setup travis ci, and can't really confirm changes to the underlying software, so unless someone wants to help out with that, I don't know if I'll feel comfortable accepting any pull requests that do anything other than documentation changes (alternately you could do the pull request on the original repo find out if travis-ci passes, then let me know here.... that might work).
 
 [![Build Status](https://travis-ci.org/sightmachine/SimpleCV.png?branch=develop)](https://travis-ci.org/sightmachine/SimpleCV)
 
