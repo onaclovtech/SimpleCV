@@ -297,10 +297,10 @@ class SVMClassifier:
             print("Correct: "+str(good))
             print("Incorrect: "+str(bad))
             classes = self.mDataSetOrange.domain.classVar.values
-            print confusion
-            #print "\t"+"\t".join(classes)
-            #for className, classConfusions in zip(classes, confusion):
-            #    print ("%s" + ("\t%i" * len(classes))) % ((className, ) + tuple(classConfusions))
+            print "\t"+"\t".join(classes)
+            if confusion > 2:
+                for className, classConfusions in zip(classes, confusion):
+                   print ("%s" + ("\t%i" * len(classes))) % ((className, ) + tuple(classConfusions))
 
         return [good, bad, confusion]
 

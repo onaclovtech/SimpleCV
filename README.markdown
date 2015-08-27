@@ -2,6 +2,8 @@
 # SimpleCV
 --------------------------
 
+As a note. I don't know if the original repo is being updated, nor do I know if this is even the right "version" of SimpleCV, however I've been using it, and have made a few fixes, and am trying to incorporate any pull requests that are pretty obviously ok from the original link. Up to you if you want to use this. You may submit pull requests, however I have no idea how to setup travis ci, and can't really confirm changes to the underlying software, so unless someone wants to help out with that, I don't know if I'll feel comfortable accepting any pull requests that do anything other than documentation changes (alternately you could do the pull request on the original repo find out if travis-ci passes, then let me know here.... that might work).
+
 [![Build Status](https://travis-ci.org/sightmachine/SimpleCV.png?branch=develop)](https://travis-ci.org/sightmachine/SimpleCV)
 
 
@@ -9,10 +11,11 @@ Quick Links:
 
  * [About](#about)
  * [Installation](#installation)
-    * [Ubuntu](#ubuntu-1204)
+    * [Docker] (#docker)
+    * [Ubuntu](#ubuntu-1404)
     * [Virtual Environment](#virtualenv)
     * [Arch Linux](#arch-linux)
-    * [Fedora](#fedora-18)
+    * [Fedora](#fedora)
     * [MacOS](#mac-os-x-106-and-above)
     * [Windows](#windows-7vista)
     * [Raspberry Pi](#raspberry-pi)
@@ -56,11 +59,46 @@ For more code snippets, we recommend the [SimpleCV examples website](http://exam
 
 The easiest way to install SimpleCV is with the packages for your distribution (Windows, Mac, Linux) included on the website (http://www.simplecv.org).  Although it is tested on many platforms there maybe scenarios where it just won't work with the package installer. Below is instructions on how to install, if you have problems please see the troubleshooting section at the end of this README file.
 
-<a id="ubuntu-1204"></a>
-### Ubuntu 12.04
+<a id="docker"></a>
+### Docker
+This is the recommended way of installing SimpleCV as you can be sure the environment will be setup the same exact way as it's suppose to be on your machine.
+
+*WARNING*: Using docker does not allow the webcam to work, it also doesn't work with Image.show(), so essentially requires you to use simplecv within an IPython notebook.
+
+The first step is to install docker on your machine if you have not, this should work for Windows, Mac, and Linux, please follow instructions at:
+<a href="https://docs.docker.com/installation/">https://docs.docker.com/installation/</a>
+
+Once docker is installed you can run simplecv as easy as (may have to run as sudo, depending on OS):
+
+    docker pull sightmachine/simplecv
+
+It will probably take a little while to download, but once done just run (may need to run as sudo, depending on OS):
+
+    docker run -p 54717:8888 -t -i sightmachine/simplecv
+
+Then just open your web browser and go to:
+
+    http://localhost:54717
+    
+**NOTE**: If you are using a Mac or Windows it will be a little different since you will be boot2docker to run.  When you run boot2docker up it should show the ip address of the docker service.  It could be something like 192.168.59.103, but this will change as it's random.  Once you know that ip you will just go to that IP address with the correct port instead:
+
+    http://192.168.59.103:54717
+
+You will get a Ipython notebook inteface, start a new notebook and enter the following:
+
+    from SimpleCV import *
+    disp = Display(displaytype='notebook')
+    img = Image('simplecv')
+    img.save(disp)
+
+You should now see the simplecv logo and now have a full simplecv environment setup to start playing around.
+
+<a id="ubuntu-1404"></a>
+### Ubuntu 14.04
 Install with pip
 
 	sudo apt-get install ipython python-opencv python-scipy python-numpy python-pygame python-setuptools python-pip
+	sudo pip install svgwrite
 	sudo pip install https://github.com/sightmachine/SimpleCV/zipball/develop
 
 Install using clone of SimpleCV repository
@@ -118,7 +156,12 @@ Install development version using aur
     yaourt -S simplecv-git
 
 <a id="fedora"></a>
-### Fedora 18
+### Fedora
+#### Fedora 20 and above
+
+    sudo yum -y install python-SimpleCV
+
+#### Fedora 18
 Install with pip
 
     sudo yum -y install python-ipython opencv-python scipy numpy pygame python-setuptools python-pip
@@ -154,7 +197,7 @@ OS X's permissions on /usr/local are too restrictive and must be changed via:
 
 Install homebrew via Terminal using:
 
-    ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+    ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 
 Ignore the single warning that instructs you to install Xcode's CLI tools (you did that already)
 To verify that homebrew is installed correctly and working, run:
@@ -439,7 +482,7 @@ to install ipython notebooks run the following:
 ## Videos - Tutorials and Demos
 
 Video tutorials and demos can be found at:
-<http://www.simplecv.org/learn/>
+<http://tutorial.simplecv.org/>
 
 ---------------------------
 <a id="mobile"></a>
