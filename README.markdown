@@ -4,7 +4,7 @@
 
 As a note. I don't know if the original repo is being updated, nor do I know if this is even the right "version" of SimpleCV, however I've been using it, and have made a few fixes, and am trying to incorporate any pull requests that are pretty obviously ok from the original link. Up to you if you want to use this. You may submit pull requests, however I have no idea how to setup travis ci, and can't really confirm changes to the underlying software, so unless someone wants to help out with that, I don't know if I'll feel comfortable accepting any pull requests that do anything other than documentation changes (alternately you could do the pull request on the original repo find out if travis-ci passes, then let me know here.... that might work).
 
-[![Build Status](https://travis-ci.org/sightmachine/SimpleCV.png?branch=develop)](https://travis-ci.org/sightmachine/SimpleCV)
+[![Build Status](https://travis-ci.org/onaclovtech/SimpleCV.png?branch=develop)](https://travis-ci.org/onaclovtech/SimpleCV)
 
 
 Quick Links:
@@ -51,7 +51,7 @@ Here is the simplecv "hello world":
     image = camera.getImage()
     image.show()
 
-For more code snippets, we recommend the [SimpleCV examples website](http://examples.simplecv.org) or looking at our example scripts in [SimpleCV/examples](http://github.com/sightmachine/SimpleCV/tree/master/SimpleCV/examples)
+For more code snippets, we recommend the [SimpleCV examples website](http://examples.simplecv.org) or looking at our example scripts in [SimpleCV/examples](http://github.com/onaclovtech/SimpleCV/tree/master/SimpleCV/examples)
 
 ---------------------------
 <a id="installation"></a>
@@ -99,12 +99,12 @@ Install with pip
 
 	sudo apt-get install ipython python-opencv python-scipy python-numpy python-pygame python-setuptools python-pip
 	sudo pip install svgwrite
-	sudo pip install https://github.com/sightmachine/SimpleCV/zipball/develop
+	sudo pip install https://github.com/onaclovtech/SimpleCV/zipball/develop
 
 Install using clone of SimpleCV repository
 
     sudo apt-get install ipython python-opencv python-scipy python-numpy python-pygame python-setuptools git
-    git clone https://github.com/sightmachine/SimpleCV.git
+    git clone https://github.com/onaclovtech/SimpleCV.git
     cd SimpleCV/
     sudo pip install -r requirements.txt
     sudo python setup.py install
@@ -131,7 +131,7 @@ Run the following commands:
     tar zxvf pygame.tar.gz
     cd ..
     ./bin/python src/pygame-pygame-6625feb3fc7f/setup.py -setuptools install
-    ./bin/pip install https://github.com/sightmachine/SimpleCV/zipball/develop
+    ./bin/pip install https://github.com/onaclovtech/SimpleCV/zipball/develop
 
 
 
@@ -142,12 +142,12 @@ Run the following commands:
 Install using pip
 
     pacman -S python2-numpy opencv2.4.4_1 python-pygame python2-setuptools ipython2 python2-pip
-    pip install https://github.com/sightmachine/SimpleCV/zipball/develop
+    pip install https://github.com/onaclovtech/SimpleCV/zipball/develop
 
 Install using clone of SimpleCV repository
 
     pacman -S python2-numpy opencv2.4.4_1 python-pygame python2-setuptools ipython2
-    git clone https://github.com/sightmachine/SimpleCV.git
+    git clone https://github.com/onaclovtech/SimpleCV.git
     cd SimpleCV/
     sudo python setup.py install
 
@@ -165,12 +165,12 @@ Install development version using aur
 Install with pip
 
     sudo yum -y install python-ipython opencv-python scipy numpy pygame python-setuptools python-pip
-    sudo python-pip install https://github.com/sightmachine/SimpleCV/zipball/develop
+    sudo python-pip install https://github.com/onaclovtech/SimpleCV/zipball/develop
 
 Install using clone of SimpleCV repository
 
     sudo yum -y install python-ipython opencv-python scipy numpy pygame python-setuptools python-pip git
-    git clone https://github.com/sightmachine/SimpleCV.git
+    git clone https://github.com/onaclovtech/SimpleCV.git
     cd SimpleCV/
     sudo python setup.py install
 
@@ -278,13 +278,13 @@ Install svgwrite by running:
 **Note:** SimpleCV's developers made a change (for the better) here that I am including, however everything up to this point is 100% guaranteed to work, because it's exactly what I did. Keeping true to that, I'll present both options. *We both suggest using the develop branch.*
 **Developer's Instructions** Install SimpleCV from the git repo and then run setup.
 
-    git clone https://github.com/sightmachine/SimpleCV.git
+    git clone https://github.com/onaclovtech/SimpleCV.git
     cd SimpleCV/
     sudo python setup.py install
 
 **JHawkins' Instructions** Install SimpleCV via PIP by running:
 
-    sudo pip install https://github.com/sightmachine/SimpleCV/zipball/master
+    sudo pip install https://github.com/onaclovtech/SimpleCV/zipball/master
 
 Test by running simplecv in the command line:
 
@@ -327,7 +327,7 @@ Commands (for Lion)::
     brew install hg
     sudo pip install hg+http://bitbucket.org/pygame/pygame
     curl -sO https://raw.github.com/fonnesbeck/ScipySuperpack/master/install_superpack.sh && source install_superpack.sh
-    pip install https://github.com/sightmachine/SimpleCV/zipball/master
+    pip install https://github.com/onaclovtech/SimpleCV/zipball/master
 
 Commands (for Snow Leopard)::
 
@@ -347,7 +347,7 @@ Commands (for Snow Leopard)::
     brew install hg
     sudo pip install https://bitbucket.org/pygame/pygame/get/6625feb3fc7f.zip
     curl -sO https://raw.github.com/fonnesbeck/ScipySuperpack/master/install_superpack.sh | source install_superpack.sh
-    pip install https://github.com/sightmachine/SimpleCV/zipball/master
+    pip install https://github.com/onaclovtech/SimpleCV/zipball/master
 
 
 <a id="windows"></a>
@@ -389,7 +389,7 @@ Exit the command line and reopen so it loads the updated python paths, then run:
     easy_install cython
     easy_install pip
     pip install ipython
-    pip install https://github.com/sightmachine/SimpleCV/zipball/1.3
+    pip install https://github.com/onaclovtech/SimpleCV/zipball/1.3
 
 ###Windows 8
  Step 1
@@ -426,7 +426,7 @@ The solution for this is to install latest stable version of scipy for windows .
 <a id="rasppi"></a>
 #### RASPBERRY PI
 
-* [Installation instructions can be found here.](https://github.com/sightmachine/SimpleCV/blob/develop/doc/HOWTO-Install%20on%20RaspberryPi.rst)
+* [Installation instructions can be found here.](https://github.com/onaclovtech/SimpleCV/blob/develop/doc/HOWTO-Install%20on%20RaspberryPi.rst)
 
 ---------------------------
 <a id="shell"></a>
@@ -472,7 +472,7 @@ Video tutorials and demos can be found at:
 
 SimpleCV can in fact be used on a mobile device.  Although the processing requires a server to be setup that runs SimpleCV our 2012 Google Summer of Code
 student had built, we have forked the project and instructions on how to set it up and run it can be found at:
-<https://github.com/sightmachine/simplecv-mobile-camera>
+<https://github.com/onaclovtech/simplecv-mobile-camera>
 
 
 
