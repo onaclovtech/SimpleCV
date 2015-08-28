@@ -37,8 +37,15 @@ class NeuralNetworkClassifier:
     mClassifier = None
     mFeatureExtractors = None
     mOrangeDomain = None
+    mParamDict = {
+        "name" : "NeuralNetwork",
+        "n_mid": 10,
+        "reg_fact": 1,
+        "max_iter" : 300,
+        "normalize" : True
+        }
 
-    def __init__(self,featureExtractors):
+    def __init__(self,featureExtractors, params=None):
 
         if not ORANGE_ENABLED:
             logger.warning("The required orange machine learning library is not installed")
@@ -50,7 +57,11 @@ class NeuralNetworkClassifier:
         self.mDataSetOrange = []
         self.mClassifier = None
         self.mOrangeDomain = None
-
+        if (params is None):
+            self.mParams = mParamDict
+        else:
+            self.mParams = params
+            
     def load(cls, fname):
         """
         Load the classifier from file
