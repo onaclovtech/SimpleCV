@@ -34,8 +34,8 @@ RUN pip install tornado
 
 # SimpleCV Install
 RUN wget https://github.com/onaclovtech/SimpleCV/archive/neural-networks.zip
-RUN unzip neural-network
-RUN cd SimpleCV-neural-network; pip install -r requirements.txt; python setup.py install
+RUN unzip neural-networks
+RUN cd SimpleCV-neural-networks; pip install -r requirements.txt; python setup.py install
 
 # Use clang
 ENV CC clang
