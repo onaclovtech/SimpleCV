@@ -1,5 +1,5 @@
 # Build with
-# sudo docker -t="simplecv" .
+# sudo docker -t simplecv .
 # Run with
 # sudo docker run -p 54717:8888 -t -i simplecv
 
