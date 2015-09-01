@@ -32,7 +32,7 @@ RUN pip install jinja2
 RUN pip install tornado
 
 # SimpleCV Install
-RUN wget https://github.com/sightmachine/SimpleCV/archive/develop.zip
+RUN wget https://github.com/onaclovtech/SimpleCV/archive/develop.zip
 RUN unzip develop
 RUN cd SimpleCV-develop; pip install -r requirements.txt; python setup.py install
 
