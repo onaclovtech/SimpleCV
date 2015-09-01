@@ -5,7 +5,7 @@
 
 FROM ubuntu:12.04
 
-MAINTAINER Anthony Oliver <anthony@sightmachine.com>
+MAINTAINER Tyson Bailey <tyson@onaclovtech.com>
 
 # Install system dependencies
 RUN apt-get update
@@ -32,7 +32,7 @@ RUN pip install jinja2
 RUN pip install tornado
 
 # SimpleCV Install
-RUN wget https://github.com/sightmachine/SimpleCV/archive/master.zip
+RUN wget https://github.com/onaclovtech/SimpleCV/archive/master.zip
 RUN unzip master
 RUN cd SimpleCV-master; pip install -r requirements.txt; python setup.py install
 
