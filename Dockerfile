@@ -17,6 +17,7 @@ RUN apt-get install -y cmake
 RUN apt-get install -y python2.7
 RUN apt-get install -y python2.7-dev
 RUN apt-get install -y python-setuptools
+RUN apt-get install -y python-nose
 RUN wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py -O - | python
 
 # SimpleCV Specific
