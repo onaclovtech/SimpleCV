@@ -5,7 +5,7 @@
 
 FROM ubuntu:12.04
 
-MAINTAINER Anthony Oliver <anthony@sightmachine.com>
+MAINTAINER Tyson Bailey <tyson@onaclovtech.com>
 
 # Install system dependencies
 RUN apt-get update
