@@ -32,7 +32,7 @@ RUN pip install jinja2
 RUN pip install tornado
 
 # SimpleCV Install
-RUN wget https://github.com/onaclovtech/SimpleCV/archive/neural-network.zip
+RUN wget https://github.com/onaclovtech/SimpleCV/archive/neural-networks.zip
 RUN unzip neural-network
 RUN cd SimpleCV-neural-network; pip install -r requirements.txt; python setup.py install
 
