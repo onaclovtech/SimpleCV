@@ -32,9 +32,9 @@ RUN pip install jinja2
 RUN pip install tornado
 
 # SimpleCV Install
-RUN wget https://github.com/sightmachine/SimpleCV/archive/master.zip
-RUN unzip master
-RUN cd SimpleCV-master; pip install -r requirements.txt; python setup.py install
+RUN wget https://github.com/sightmachine/SimpleCV/archive/neural-network.zip
+RUN unzip neural-network
+RUN cd SimpleCV-neural-network; pip install -r requirements.txt; python setup.py install
 
 # Use clang
 ENV CC clang
