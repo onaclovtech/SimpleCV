@@ -35,7 +35,7 @@ RUN pip install tornado
 # Orange Install
 RUN wget http://orange.biolab.si/download/files/archive/orange-source-snapshot-hg-2013-05-17.zip
 RUN unzip orange-source-snapshot-hg-2013-05-17
-RUN cd orange-source-snapshot-hg-2013-05-17; python setup.py build ;python setup.py install
+RUN cd Orange-2.6.1; python setup.py build ;python setup.py install
 RUN cd ..
 
 # SimpleCV Install
