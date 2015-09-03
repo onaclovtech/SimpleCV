@@ -17,7 +17,7 @@ is as follows.
 7. Save the classifier.
 8. Deploy using the classify method.
 """
-class KNNClassifier:
+class KNNClassifier(Classifier):
     """
     This class encapsulates a K- Nearest Neighbor Classifier.
 
