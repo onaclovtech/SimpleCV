@@ -19,7 +19,7 @@ is as follows.
 7. Save the classifier.
 8. Deploy using the classify method.
 """
-class TreeClassifier:
+class TreeClassifier(Classifier):
     """
     This method encapsulates a number of tree-based machine learning approaches
     and associated meta algorithms.
