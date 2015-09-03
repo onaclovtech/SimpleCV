@@ -75,3 +75,10 @@ class Classifier:
         output = open(fname, 'wb')
         pickle.dump(self,output,2) # use two otherwise it w
         output.close()
+
+    def load(cls, fname):
+        """
+        Load the classifier from file
+        """
+        return pickle.load(file(fname, 'rb'))
+    load = classmethod(load)
