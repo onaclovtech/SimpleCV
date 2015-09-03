@@ -68,3 +68,10 @@ class Classifier:
             count = count + 1
             del img
         return count
+    def save(self, fname):
+        """
+        Save the classifier to file
+        """
+        output = open(fname, 'wb')
+        pickle.dump(self,output,2) # use two otherwise it w
+        output.close()
