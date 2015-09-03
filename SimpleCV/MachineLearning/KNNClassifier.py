@@ -75,23 +75,7 @@ class KNNClassifier(Classifier):
         Note that training and testing will need to be redone.
         """
         self.mDistType = self.mDistDict[dist]
-
-    def load(cls, fname):
-        """
-        Load the classifier from file
-        """
-        return pickle.load(file(fname))
-    load = classmethod(load)
-
-
-    def save(self, fname):
-        """
-        Save the classifier to file
-        """
-        output = open(fname, 'wb')
-        pickle.dump(self,output,2) # use two otherwise it w
-        output.close()
-
+        
     def __getstate__(self):
         mydict = self.__dict__.copy()
         self.mDataSetOrange = None
