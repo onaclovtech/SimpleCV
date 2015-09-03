@@ -94,13 +94,6 @@ class TreeClassifier(Classifier):
             self.mFlavorParams = flavorDict
         self.mFeatureExtractors =  featureExtractors
 
-    def load(cls, fname):
-        """
-        Load the classifier from file
-        """
-        return pickle.load(file(fname))
-    load = classmethod(load)
-
     def __getstate__(self):
         mydict = self.__dict__.copy()
         self.mDataSetOrange = None
