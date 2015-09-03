@@ -43,14 +43,6 @@ class NaiveBayesClassifier(Classifier):
         self.mClassifier = None
         self.mOrangeDomain = None
 
-    def __getstate__(self):
-        mydict = self.__dict__.copy()
-        self.mDataSetOrange = None
-        del mydict['mDataSetOrange']
-        self.mOrangeDomain = None
-        del mydict['mOrangeDomain']
-        return mydict
-
     def __setstate__(self, mydict):
         self.__dict__ = mydict
         colNames = []
