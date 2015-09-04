@@ -141,3 +141,15 @@ class Classifier:
             colNames.extend(extractor.getFieldNames())
         self.mOrangeDomain = orange.Domain(map(orange.FloatVariable,colNames),orange.EnumVariable("type",values=self.mClassNames))
         self.mDataSetOrange = orange.ExampleTable(self.mOrangeDomain,self.mDataSetRaw)
+
+
+    def _WriteText(self, disp, img, txt,color):
+        if(disp is not None):
+            txt = ' ' + txt + ' '
+            img = img.adaptiveScale(disp.resolution)
+            layer = DrawingLayer((img.width,img.height))
+            layer.setFontSize(60)
+            layer.ezViewText(txt,(20,20),fgcolor=color)
+            img.addDrawingLayer(layer)
+            img.applyLayers()
+            img.save(disp)
