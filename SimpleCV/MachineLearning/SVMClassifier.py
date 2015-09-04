@@ -110,14 +110,7 @@ class SVMClassifier(Classifier):
         del mydict['mClassifier']
         return mydict
 
-    def __setstate__(self, mydict):
-        self.__dict__ = mydict
-        colNames = []
-        for extractor in self.mFeatureExtractors:
-            colNames.extend(extractor.getFieldNames())
-        self.mOrangeDomain = orange.Domain(map(orange.FloatVariable,colNames),orange.EnumVariable("type",values=self.mClassNames))
-        self.mDataSetOrange = orange.ExampleTable(self.mOrangeDomain,self.mDataSetRaw)
-        self.mClassifier = self.mSVMPrototype(self.mDataSetOrange)
+
 
 
     def classify(self, image):
