@@ -68,6 +68,86 @@ class Classifier:
             count = count + 1
             del img
         return count
+        
+    def _testImageSet(self,imageset,className,dataset,subset,disp,verbose):
+        count = 0
+        correct = 0
+        badFeat = False
+        if(subset > 0):
+            imageset = imageset[0:subset]
+        for img in imageset:
+            if verbose:
+                print "Opening file: " + img.filename
+            featureVector = []
+            for extractor in self.mFeatureExtractors:
+                feats = extractor.extract(img)
+                if( feats is not None ):
+                    featureVector.extend(feats)
+                else:
+                    badFeat = True
+            if( badFeat ):
+                del img
+                badFeat = False
+                continue 
+            featureVector.extend([className])
+            dataset.append(featureVector)
+            test = orange.ExampleTable(self.mOrangeDomain,[featureVector])
+            c = self.mClassifier(test[0])
+            testClass = test[0].getclass()
+            if(testClass==c):
+                text =  "Classified as " + str(c)
+                self._WriteText(disp,img,text, Color.GREEN)
+                correct = correct + 1
+            else:   
+                text =  "Mislassified as " + str(c)
+                self._WriteText(disp,img,text, Color.RED)
+            count = count + 1
+            del img
+            
+        return([dataset,count,correct])
+    def _testPath(self,path,className,dataset,subset,disp,verbose):
+        count = 0
+        correct = 0
+        badFeat = False
+        files = []
+        for ext in IMAGE_FORMATS:
+            files.extend(glob.glob( os.path.join(path, ext)))
+        if(subset > 0):
+            nfiles = min(subset,len(files))
+        else:
+            nfiles = len(files)
+        for i in range(nfiles):
+            infile = files[i]
+            if verbose:
+                print "Opening file: " + infile
+            img = Image(infile)
+            featureVector = []
+            for extractor in self.mFeatureExtractors:
+                feats = extractor.extract(img)
+                if( feats is not None ):
+                    featureVector.extend(feats)
+                else:
+                    badFeat = True
+            if( badFeat ):
+                del img
+                badFeat = False
+                continue
+            featureVector.extend([className])
+            dataset.append(featureVector)
+            test = orange.ExampleTable(self.mOrangeDomain,[featureVector])
+            c = self.mClassifier(test[0])
+            testClass = test[0].getclass()
+            if(testClass==c):
+                text =  "Classified as " + str(c)
+                self._WriteText(disp,img,text, Color.GREEN)
+                correct = correct + 1
+            else:
+                text =  "Mislassified as " + str(c)
+                self._WriteText(disp,img,text, Color.RED)
+            count = count + 1
+            del img
+
+        return([dataset,count,correct])
     def save(self, fname):
         """
         Save the classifier to file
