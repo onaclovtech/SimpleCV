@@ -99,16 +99,6 @@ class SVMClassifier(Classifier):
         if(self.mSVMProperties["gamma"] is not None):
             self.mSVMPrototype.gamma = self.mSVMProperties["gamma"]
 
-    def __getstate__(self):
-        mydict = self.__dict__.copy()
-        self.mDataSetOrange = None
-        del mydict['mDataSetOrange']
-        self.mOrangeDomain = None
-        del mydict['mOrangeDomain']
-        self.mClassifier = None
-        del mydict['mClassifier']
-        return mydict
-
     def classify(self, image):
         """
         Classify a single image. Takes in an image and returns the string
@@ -126,15 +116,6 @@ class SVMClassifier(Classifier):
         test = orange.ExampleTable(self.mOrangeDomain,[featureVector])
         c = self.mClassifier(test[0]) #classify
         return str(c) #return to class name
-
-    def setFeatureExtractors(self, extractors):
-        """
-        Add a list of feature extractors to the classifier. These feature extractors
-        must match the ones used to train the classifier. If the classifier is already
-        trained then this method will require that you retrain the data.
-        """
-        self.mFeatureExtractors = extractors
-        return None
 
     def train(self,images,classNames,disp=None,subset=-1,savedata=None,verbose=True):
         """
@@ -274,14 +255,3 @@ class SVMClassifier(Classifier):
                 print ("%s" + ("\t%i" * len(classes))) % ((className, ) + tuple(classConfusions))
 
         return [good, bad, confusion]
-
-    def _WriteText(self, disp, img, txt,color):
-        if(disp is not None):
-            txt = ' ' + txt + ' '
-            img = img.adaptiveScale(disp.resolution)
-            layer = DrawingLayer((img.width,img.height))
-            layer.setFontSize(60)
-            layer.ezViewText(txt,(20,20),fgcolor=color)
-            img.addDrawingLayer(layer)
-            img.applyLayers()
-            img.save(disp)
