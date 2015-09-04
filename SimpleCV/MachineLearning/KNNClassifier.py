@@ -94,16 +94,6 @@ class KNNClassifier(Classifier):
         c = self.mClassifier(test[0]) #classify
         return str(c) #return to class name
 
-
-    def setFeatureExtractors(self, extractors):
-        """
-        Add a list of feature extractors to the classifier. These feature extractors
-        must match the ones used to train the classifier. If the classifier is already
-        trained then this method will require that you retrain the data.
-        """
-        self.mFeatureExtractors = extractors
-        return None
-
     def train(self,images,classNames,disp=None,subset=-1,savedata=None,verbose=True):
         """
         Train the classifier.
