@@ -122,6 +122,9 @@ class NeuralNetworkClassifier:
         """
         self.mFeatureExtractors = extractors
         return None
+        
+    def getFeatureExtractors(self):
+        return self.mFeatureExtractors
 
     def _trainPath(self,path,className,subset,disp,verbose):
         count = 0
