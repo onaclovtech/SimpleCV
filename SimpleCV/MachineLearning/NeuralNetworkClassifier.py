@@ -30,13 +30,7 @@ class NeuralNetworkClassifier:
     mClassifier = None
     mFeatureExtractors = None
     mOrangeDomain = None
-    mParamDict = {
-        "name" : "NeuralNetwork",
-        "n_mid": 10,
-        "reg_fact": 1,
-        "max_iter" : 300,
-        "normalize" : True
-        }
+
 
     def __init__(self,featureExtractors, params=None):
 
@@ -44,6 +38,13 @@ class NeuralNetworkClassifier:
             logger.warning("The required orange machine learning library is not installed")
             return None
 
+        mParamDict = {
+        "name" : "NeuralNetwork",
+        "n_mid": 10,
+        "reg_fact": 1,
+        "max_iter" : 300,
+        "normalize" : True
+        }
         self.mFeatureExtractors =  featureExtractors
         print "featureExtractors"
         print featureExtractors
