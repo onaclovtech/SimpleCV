@@ -231,8 +231,7 @@ class NeuralNetworkClassifier:
         if(savedata is not None):
             orange.saveTabDelimited (savedata, self.mDataSetOrange)
 
-        self.mClassifier = Orange.classification.neural"[]
-        \.NeuralNetworkLearner(self.mDataSetOrange)
+        self.mClassifier = Orange.classification.neural.NeuralNetworkLearner(self.mDataSetOrange)
         correct = 0
         incorrect = 0
         for i in range(count):
