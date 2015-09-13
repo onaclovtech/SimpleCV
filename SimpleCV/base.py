@@ -104,7 +104,7 @@ except ImportError:
 ORANGE_ENABLED = True
 try:
     try:
-        import orange
+        import orange; import Orange
     except ImportError:
         import Orange; import orange
 
