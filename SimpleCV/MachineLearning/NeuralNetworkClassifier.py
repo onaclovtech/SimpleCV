@@ -45,6 +45,7 @@ class NeuralNetworkClassifier:
             return None
 
         self.mFeatureExtractors =  featureExtractors
+        print self.mFeatureExtractors
         self.mClassNames = []
         self.mDataSetRaw = []
         self.mDataSetOrange = []
