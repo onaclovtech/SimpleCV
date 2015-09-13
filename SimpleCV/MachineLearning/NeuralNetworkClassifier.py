@@ -2,14 +2,7 @@ from SimpleCV.base import *
 from SimpleCV.ImageClass import Image, ImageSet
 from SimpleCV.DrawingLayer import *
 from SimpleCV.Features import FeatureExtractorBase
-"""
-Learner Parameters
-name (string) – learner name.
-n_mid (int) – Number of nodes in the hidden layer
-reg_fact (float) – Regularization factor.
-max_iter (int) – Maximum number of iterations.
-normalize
-"""
+
 """
 This class is encapsulates almost everything needed to train, test, and deploy a
 multiclass support vector machine for an image classifier. Training data should
